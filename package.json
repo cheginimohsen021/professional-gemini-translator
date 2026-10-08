@@ -1,0 +1,11 @@
+{
+  "name": "professional-web-translator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension for translating pages and documents via Gemini API.",
+  "scripts": {
+    "lint": "echo 'No lint configured for this repository. Use Chrome dev tools and manifest validation.'",
+    "check-manifest": "node -e \"const fs=require('fs'); JSON.parse(fs.readFileSync('manifest.json','utf8')); console.log('manifest OK');\"",
+    "test": "echo 'No automated tests included in this starter project.'"
+  }
+}

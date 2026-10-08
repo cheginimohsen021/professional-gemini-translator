@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translator Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <h1>Translator Settings</h1>
+      </header>
+
+      <section class="panel">
+        <h2>Gemini API Key</h2>
+        <p class="muted">Enter your own Gemini API key. The key is stored locally in Chrome storage.</p>
+
+        <div class="field-row">
+          <input id="api-key-input" type="password" placeholder="Paste your Gemini API key" />
+          <button id="toggle-api-key-btn" class="small-btn">Show</button>
+        </div>
+
+        <div class="action-row">
+          <button id="save-api-key-btn" class="primary-btn">Save</button>
+          <button id="test-api-key-btn" class="secondary-btn">Test</button>
+          <button id="remove-api-key-btn" class="danger-btn">Remove</button>
+        </div>
+
+        <div id="api-status" class="status-box hidden"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Privacy</h2>
+        <ul>
+          <li>Page text is sent only when you trigger a page translation.</li>
+          <li>Uploaded file content is sent only when you trigger file translation.</li>
+          <li>No telemetry or analytics is collected by this extension by default.</li>
+          <li>Google Gemini API applies its own terms and privacy handling to the transferred content.</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Supported Formats</h2>
+        <ul>
+          <li>Plain text (.txt)</li>
+          <li>Markdown (.md)</li>
+          <li>HTML (.html)</li>
+        </ul>
+        <p class="muted">PDF and DOCX support require additional parsing libraries and are intentionally not included in this starter build.</p>
+      </section>
+    </main>
+
+    <script src="../shared/utils.js"></script>
+    <script src="../shared/storage-manager.js"></script>
+    <script src="../shared/api-client.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

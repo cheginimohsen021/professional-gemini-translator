@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translator</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Translator</h1>
+        <button id="settings-btn" class="icon-button" title="Settings">⚙️</button>
+      </header>
+
+      <main class="main-content">
+        <div id="status-bar" class="status hidden"></div>
+        <div id="error-box" class="error hidden"></div>
+
+        <section id="setup-section" class="section">
+          <p class="warning">Gemini API key is required.</p>
+          <p class="muted">Configure the key in the extension settings to begin translating.</p>
+          <button id="setup-key-btn" class="primary-btn">Configure API Key</button>
+        </section>
+
+        <section id="main-section" class="section hidden">
+          <div class="field">
+            <label for="source-lang">From</label>
+            <select id="source-lang">
+              <option value="auto">Auto-detect</option>
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="ru">Russian</option>
+              <option value="ja">Japanese</option>
+              <option value="zh">Chinese</option>
+              <option value="ar">Arabic</option>
+              <option value="ko">Korean</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="target-lang">To</label>
+            <select id="target-lang">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="ru">Russian</option>
+              <option value="ja">Japanese</option>
+              <option value="zh">Chinese</option>
+              <option value="ar">Arabic</option>
+              <option value="ko">Korean</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="model-select">Gemini model</label>
+            <div class="inline-row">
+              <select id="model-select"></select>
+              <button id="refresh-models-btn" class="mini-btn" title="Refresh models">↻</button>
+            </div>
+            <small id="model-info" class="tiny-text"></small>
+          </div>
+
+          <div class="field">
+            <label for="style-select">Style</label>
+            <select id="style-select">
+              <option value="natural">Natural</option>
+              <option value="faithful">Faithful</option>
+              <option value="formal">Formal</option>
+              <option value="technical">Technical</option>
+            </select>
+          </div>
+
+          <div class="mode-toggle">
+            <button class="mode active" data-mode="page">Translate Page</button>
+            <button class="mode" data-mode="file">Translate File</button>
+          </div>
+
+          <div id="page-mode" class="mode-panel active">
+            <button id="translate-page-btn" class="primary-btn full-width">Translate Current Page</button>
+          </div>
+
+          <div id="file-mode" class="mode-panel hidden">
+            <input id="file-input" type="file" accept=".txt,.md,.html" hidden />
+            <button id="file-upload-btn" class="secondary-btn full-width">Choose File</button>
+            <p id="file-name" class="tiny-text">No file selected</p>
+            <button id="translate-file-btn" class="primary-btn full-width" disabled>Translate File</button>
+          </div>
+
+          <details class="advanced">
+            <summary>Advanced</summary>
+            <label class="checkbox-row"><input id="preserve-html" type="checkbox" checked /> Preserve HTML structure</label>
+            <label class="checkbox-row"><input id="exclude-code" type="checkbox" checked /> Avoid translating code/URLs</label>
+          </details>
+        </section>
+
+        <section id="progress-section" class="section hidden">
+          <div class="spinner"></div>
+          <p id="progress-text" class="muted">Translating...</p>
+        </section>
+
+        <section id="results-section" class="section hidden">
+          <div class="results-header">
+            <h2>Translation result</h2>
+            <button id="close-results-btn" class="mini-btn">✕</button>
+          </div>
+          <div class="tab-bar">
+            <button class="tab active" data-tab="translated">Translated</button>
+            <button class="tab" data-tab="original">Original</button>
+          </div>
+          <pre id="translated-text" class="result-box"></pre>
+          <pre id="original-text" class="result-box hidden"></pre>
+          <button id="copy-result-btn" class="secondary-btn full-width">Copy result</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="../shared/utils.js"></script>
+    <script src="../shared/storage-manager.js"></script>
+    <script src="../shared/message-validator.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

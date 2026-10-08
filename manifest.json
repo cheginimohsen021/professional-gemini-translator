@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Professional Web & Document Translator",
+  "version": "1.0.0",
+  "description": "Translate web pages and files with your own Gemini API key.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Translate with Gemini"
+  },
+  "options_page": "src/options/options.html",
+  "host_permissions": [],
+  "minimum_chrome_version": "120"
+}
